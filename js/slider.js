@@ -18,8 +18,34 @@ const ser = setInterval(()=>{
     if(imgIndex === images.length){
         imgIndex = 0;
     }
+    showing(imgIndex);
+    imgIndex++
+},5000);
+
+
+const prev = document.getElementById('prev');
+const next = document.getElementById('next');
+
+next.addEventListener('click', () => {
+    console.log(imgIndex);
+    if(imgIndex === images.length){
+        imgIndex = 0;
+    }
+    showing(imgIndex);
+    imgIndex++;
+});
+
+prev.addEventListener('click', () => {
+    console.log(imgIndex);
+    showing(imgIndex);
+    if(imgIndex === 0){
+        imgIndex = images.length;
+    }
+    imgIndex--;
+});
+
+const showing = (imgIndex) => {
     const imgLink = images[imgIndex];
     console.log(imgLink);
     img.setAttribute('src', imgLink);
-    imgIndex++
-},1000);
+};
